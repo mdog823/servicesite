@@ -12,4 +12,6 @@ class User < ActiveRecord::Base
 
   has_many :pins
 
+  has_many :opps, :dependent => :destroy
+
 end

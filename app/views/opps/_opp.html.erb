@@ -1,6 +1,8 @@
 <tr>
         <td><%= opp.title %></td>
         <td><%= link_to 'Show', opp %></td>
+    <% if current_user == opp.user %>
         <td><%= link_to 'Edit', edit_opp_path(opp) %></td>
         <td><%= link_to 'Destroy', opp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
 </tr>

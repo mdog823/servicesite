@@ -1,0 +1,18 @@
+<h1>Listing servs</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <thead>
+
+<tbody>
+  <%= render @serv %>
+</tbody>
+
+<%= link_to 'New Serv', new_serv_path %>

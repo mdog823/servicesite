@@ -1,11 +1,17 @@
 <div class="row">
-    <div class="span6 offset3">
-        <div class="well">
-            <p>
-              <%= @opp.title %>
-            </p>
-            <%= link_to 'Edit', edit_pin_path(@opp) %> |
-            <%= link_to 'Back', opps_path %>
-        </div>
-    </div>
-</div>
+	<div class="span6 offset3">
+		<div class="well">
+		<p>
+		  <%= @opp.title %>
+		</p>
+		<p>
+		  <%= @opp.user.name %>
+		</p>
+
+		<% if current_user == @opp.user %>
+		<%= link_to 'Edit', edit_opp_path(@opp) %> |
+		<% end %>
+		<%= link_to 'Back', opps_path %>
+		</div>
+	</div>
+</div> 

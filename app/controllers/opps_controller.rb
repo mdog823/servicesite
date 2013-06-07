@@ -1,30 +1,12 @@
 class OppsController < ApplicationController
-  # GET /opps
-  # GET /opps.json
-  def index
-    @opps = Opp.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @opps }
-    end
-  end
+  before_filter :authenticate_user!, except: [:index]
 
-  # GET /opps/1
-  # GET /opps/1.json
-  def show
-    @opp = Opp.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @opp }
-    end
-  end
 
   # GET /opps/new
   # GET /opps/new.json
   def new
-    @opp = Opp.new
+    @opp = current_user.opps.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +16,13 @@ class OppsController < ApplicationController
 
   # GET /opps/1/edit
   def edit
-    @opp = Opp.find(params[:id])
+    @opp = current_user.opps.find(params[:id])
   end
 
   # POST /opps
   # POST /opps.json
   def create
-    @opp = Opp.new(params[:opp])
+    @opp = current_user.opps.new(params[:opp])
 
     respond_to do |format|
       if @opp.save
@@ -56,7 +38,7 @@ class OppsController < ApplicationController
   # PUT /opps/1
   # PUT /opps/1.json
   def update
-    @opp = Opp.find(params[:id])
+    @opp = current_user.opps.find(params[:id])
 
     respond_to do |format|
       if @opp.update_attributes(params[:opp])
@@ -72,7 +54,7 @@ class OppsController < ApplicationController
   # DELETE /opps/1
   # DELETE /opps/1.json
   def destroy
-    @opp = Opp.find(params[:id])
+    @opp = current_user.opps.find(params[:id])
     @opp.destroy
 
     respond_to do |format|
